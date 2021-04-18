@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import MarketingApp from "./components/MarketingApp";
 
 function App() {
-    return (
-        <div>
-            Hello My Brothers
-        </div>
-    )
+  return (
+    <div>
+      <h1>Hi</h1> <hr /> <MarketingApp />
+    </div>
+  );
 }
 
-export default App
+export default App;
