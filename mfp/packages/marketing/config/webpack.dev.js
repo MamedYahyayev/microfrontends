@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
 
+// i will use in the shared module
+const packageJson = require("../package.json");
+
 const devConfig = {
   mode: "development",
   devServer: {
@@ -21,7 +24,8 @@ const devConfig = {
       exposes: {
         "./MarketingApp": "./src/bootstrap",
       },
-      shared: ['react', 'react-dom']
+      // it will share dependencies that are the same other modules, and we don't need to write same dependencies explicitly
+      shared: packageJson.dependencies,
     }),
   ],
 };

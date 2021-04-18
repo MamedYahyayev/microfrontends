@@ -3,6 +3,9 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common");
 
+// i will use in the shared module
+const packageJson = require("../package.json");
+
 const devConfig = {
   mode: "development",
   devServer: {
@@ -20,7 +23,8 @@ const devConfig = {
       remotes: {
         marketing: "marketing@http://localhost:8081/remoteEntry.js",
       },
-      shared: ['react', 'react-dom']
+      // it will share dependencies that are the same other modules, and we don't need to write same dependencies explicitly
+      shared: packageJson.dependencies,
     }),
   ],
 };
